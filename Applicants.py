@@ -1,12 +1,8 @@
 import mysql.connector as ms
 import datetime 
 import random as r
-con = {
-    'host': 'localhost',
-    'user': 'root',
-    'passwd': 'abc@123',
-    'database': 'job'}
-cur = con.cursor()
+con=ms.connect(host='localhost', user='root', passwd='abc@123', database='job')
+cur=con.cursor()
 
 def start_applicants():
     print("**"*30)
