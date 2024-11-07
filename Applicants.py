@@ -1,8 +1,12 @@
 import mysql.connector as ms
 import datetime 
 import random as r
-con=ms.connect(host='localhost', user='root', passwd='abc@123', database='job')
-cur=con.cursor()
+con = {
+    'host': 'localhost',
+    'user': 'root',
+    'passwd': 'abc@123',
+    'database': 'job'}
+cur = con.cursor()
 
 def start_applicants():
     print("**"*30)
@@ -109,21 +113,17 @@ def modify_applicant():
             print()
             if ch in 'Yy':
                 print("What do you want to modify? ")
-                print("1. Name\n2. Email\n3. Gender\n4. Date Applied\n5. Job Title\n6. Qualification \n7. Experience\n8. Employment Status\
-                       \n9. Current Status\n10. City")
+                print("1. Name\n2. Email\n3. Gender\n4. Date Applied\n5. Job Title\n6. Qualification \n7. Experience\n8. Employment Status\n9. Current Status\n10. City")
                 ans=int(input("Enter your choice: "))
                 if ans==1:
                     new=input("Enter new name: ")
                     q="update applicants set Aname='{}' where AID={}".format(new,ID)
-                
                 elif ans==2:
                     new=input("Enter new Email: ")
                     q="update applicants set Email='{}' where AID={}".format(new,ID)
-                
                 elif ans==3:
                     new=int(input("Enter new Gender: "))
                     q="update applicants set Gender='{}' where AID={}".format(new,ID)
-                
                 elif ans==4:
                     print("Enter the new date: ")
                     yy=int(input("Enter the Year: "))
@@ -132,23 +132,18 @@ def modify_applicant():
                     date1=datetime.date(yy,mm,dd)
                     new = date1.strftime('%Y-%m-%d')
                     q="update applicants set dateapplied='{}' where AID={}".format(new,ID)
-                
                 elif ans==5:
                     new=input("Enter new Job Title: ")
                     q="update applicants set jobtitle='{}' where AID={}".format(new,ID)
-                
                 elif ans==6:
                     new=input("Enter new Qualification: ")
                     q="update applicants set Qualification='{}' where AID={}".format(new,ID)
-                
                 elif ans==7:
                     new=int(input("Enter new experience: "))
                     q="update applicants set experience={} where AID={}".format(new,ID)
-                
                 elif ans==8:
                     new=input("Enter new Employment Status: ")
                     q="update applicants set empstatus='{}' where AID={}".format(new,ID)
-                
                 elif ans==9:
                     print("Enter new Current Status \n1.Hired\n2.In Review\n3.Rejected\n")
                     newstatus=int(input("Enter your choice: "))
